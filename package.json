@@ -1,0 +1,20 @@
+{
+  "name": "kph-khalils-play-house",
+  "version": "1.0.0",
+  "private": true,
+  "description": "KPH \u2014 Khalil's Play House, a responsive study-resource library with admin-only uploads.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "multer": "^1.4.5-lts.1"
+  }
+}

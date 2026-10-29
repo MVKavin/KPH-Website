@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#202a22">
+  <title>Owner — KPH</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/owner.js" defer></script>
+</head>
+<body class="owner-body">
+  <header class="owner-header">
+    <a class="brand" href="/" aria-label="Back to KPH">
+      <span class="brand-mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 6.5h12.3a5.2 5.2 0 0 1 5.2 5.2v13.8H12.2A5.2 5.2 0 0 1 7 20.3Z"/><path d="M11 11h8M11 15h8M11 19h4"/></svg></span>
+      <span class="brand-wordmark">KPH<span class="brand-period">.</span></span>
+    </a>
+    <div class="owner-header-right">
+      <a href="/" class="button button-quiet">Back to site</a>
+      <button class="button button-quiet" id="signOutButton" type="button" hidden>Sign out</button>
+    </div>
+  </header>
+
+  <main class="owner-main">
+    <div id="ownerLoading" class="owner-loading">
+      <span class="loader"></span>
+      <span>Checking access…</span>
+    </div>
+
+    <section id="loginView" class="owner-card" hidden>
+      <div class="modal-eyebrow">KPH OWNER ACCESS</div>
+      <h1>Welcome<br>back<span class="headline-accent">.</span></h1>
+      <p class="modal-description">Sign in to manage the resource library.</p>
+      <form id="loginForm">
+        <label class="field-label" for="adminPassword">Password</label>
+        <input class="form-input" type="password" id="adminPassword" name="password" required autocomplete="current-password" placeholder="Enter your password">
+        <p class="form-error" id="loginError" role="alert"></p>
+        <button class="button button-dark button-full" type="submit">Sign in</button>
+      </form>
+      <p class="modal-footnote">Only the KPH owner can access this page.</p>
+    </section>
+
+    <section id="dashboardView" hidden>
+      <div class="owner-welcome">
+        <div class="modal-eyebrow">KPH OWNER DASHBOARD</div>
+        <h1>Your<br>library<span class="headline-accent">.</span></h1>
+      </div>
+
+      <div class="owner-card">
+        <h2 class="owner-section-title">Add a resource</h2>
+        <p class="modal-description">Give your file a clear title and subject so it is easy to find later.</p>
+        <form id="uploadForm" enctype="multipart/form-data">
+          <div class="form-grid">
+            <div class="form-field"><label class="field-label" for="resourceTitle">Resource title <span>*</span></label><input class="form-input" type="text" id="resourceTitle" name="title" maxlength="120" required placeholder="e.g. Signals &amp; Systems — Unit 2"></div>
+            <div class="form-field"><label class="field-label" for="resourceKind">Resource type <span>*</span></label><select class="form-input" id="resourceKind" name="kind" required><option value="note">Notes</option><option value="assignment">Assignment</option></select></div>
+            <div class="form-field"><label class="field-label" for="resourceSubject">Subject <span>*</span></label><input class="form-input" type="text" id="resourceSubject" name="subject" maxlength="80" required placeholder="e.g. Electrical Machines"></div>
+            <div class="form-field"><label class="field-label" for="resourceSemester">Semester / year</label><input class="form-input" type="text" id="resourceSemester" name="semester" maxlength="60" placeholder="e.g. Semester 3"></div>
+          </div>
+          <div class="form-field form-field-spaced"><label class="field-label" for="resourceDescription">Short description</label><textarea class="form-input form-textarea" id="resourceDescription" name="description" maxlength="500" rows="3" placeholder="What does this file cover?"></textarea></div>
+          <label class="drop-zone" id="dropZone" for="resourceFile"><input id="resourceFile" name="file" type="file" required accept=".pdf,.doc,.docx,.ppt,.pptx,.txt,.md,.jpg,.jpeg,.png,.webp,.xlsx,.csv"><span class="upload-symbol"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M4 15.5v3A1.5 1.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5v-3"/></svg></span><b id="fileNameLabel">Drop your file here, or <u>browse</u></b><small>PDF, Office, image, text, CSV · max 25 MB</small></label>
+          <p class="form-error" id="uploadError" role="alert"></p>
+          <div class="upload-form-actions"><span class="private-note"><span>●</span> Stored on this server</span><button class="button button-dark" id="submitUpload" type="submit">Upload resource</button></div>
+        </form>
+      </div>
+
+      <div class="owner-card">
+        <h2 class="owner-section-title">Library resources</h2>
+        <p class="modal-description" id="ownerResourceCount">Loading resources…</p>
+        <div id="ownerResourceList" class="owner-resource-list"></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

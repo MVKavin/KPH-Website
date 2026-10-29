@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#202a22">
+  <meta name="description" content="Khalil’s Play House — a calm, searchable library for notes, assignments, and study resources.">
+  <title>KPH — Khalil's Play House</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="intro-screen" id="introScreen" aria-hidden="true">
+    <div class="intro-mark" aria-label="KPH"><span>K</span><span>P</span><span>H</span></div>
+    <div class="intro-full-name" aria-label="Khalil's Play House"><span>Khalil's</span><span>Play</span><span>House</span></div>
+    <p class="intro-tagline">YOUR SPACE. YOUR PACE.</p>
+  </div>
+  <div class="announcement"><span class="announcement-dot"></span> YOUR SEMESTER, ONE CALMER PLACE</div>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="KPH home">
+      <span class="brand-mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 6.5h12.3a5.2 5.2 0 0 1 5.2 5.2v13.8H12.2A5.2 5.2 0 0 1 7 20.3Z"/><path d="M11 11h8M11 15h8M11 19h4"/></svg></span>
+      <span class="brand-wordmark">KPH<span class="brand-period">.</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#library">Library</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="#about">About</a>
+    </nav>
+    <div class="header-actions">
+      <a class="button button-dark header-cta" href="#library">Explore library</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false" type="button"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero section-shell">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-line"></span> YOUR ACADEMIC HOME BASE</div>
+        <h1>Good notes.<br>Less <span class="headline-accent">last-minute.</span></h1>
+        <p class="hero-description">A calmer home for your notes, assignments, and everything you need to move through the semester.</p>
+        <div class="hero-actions">
+          <a href="#library" class="button button-dark button-large">Find your resources</a>
+        </div>
+        <div class="hero-note"><span class="avatar-stack"><i>K</i><i>P</i><i>H</i></span><span><strong id="heroResourceCount">Your study space, all in one place.</strong><small>Notes and assignments, thoughtfully organised.</small></span></div>
+      </div>
+      <div class="hero-visual" aria-label="Illustration of organised study resources">
+        <div class="visual-orbit orbit-one"></div><div class="visual-orbit orbit-two"></div>
+        <div class="floating-label label-top"><span class="mini-spark">✳</span> A little more organised</div>
+        <div class="paper paper-back"><span class="paper-mini-line"></span><span class="paper-mini-line short"></span><span class="paper-mini-line"></span><span class="paper-mini-line tiny"></span></div>
+        <div class="paper paper-front">
+          <div class="paper-top"><span class="file-type">PDF</span><span class="paper-menu">•••</span></div>
+          <div class="paper-title-lines"><b></b><b></b></div>
+          <div class="paper-rule"></div>
+          <span class="paper-mini-line"></span><span class="paper-mini-line"></span><span class="paper-mini-line short"></span>
+          <div class="diagram"><span></span><span></span><span></span><i></i><b></b></div>
+          <span class="paper-mini-line"></span><span class="paper-mini-line short"></span>
+          <div class="paper-footer"><span>STUDY NOTES</span><span>01 / 08</span></div>
+        </div>
+        <div class="floating-label label-bottom"><span class="label-check">✓</span><span><b>Your notes, in one place</b><small>Organised by subject</small></span></div>
+        <div class="visual-sticker">MAKE<br>ROOM<br>TO LEARN</div>
+      </div>
+      <div class="hero-bottomline"><span>MADE FOR THE WAY YOU STUDY</span><span class="bottomline-dots">● &nbsp; ● &nbsp; ●</span><span>NOTES · ASSIGNMENTS · RESOURCES</span></div>
+    </section>
+
+    <section class="ticker" aria-label="Resource types"><div class="ticker-track"><span>LECTURE NOTES <b>✳</b></span><span>ASSIGNMENTS <b>✳</b></span><span>SUBJECT-WISE LIBRARY <b>✳</b></span><span>STUDY MATERIAL <b>✳</b></span><span>LECTURE NOTES <b>✳</b></span><span>ASSIGNMENTS <b>✳</b></span><span>SUBJECT-WISE LIBRARY <b>✳</b></span></div></section>
+
+    <section class="library-section section-shell" id="library">
+      <div class="section-heading library-heading">
+        <div><div class="eyebrow"><span class="eyebrow-line"></span> THE RESOURCE LIBRARY</div><h2>Find what you<br><span class="muted-heading">came here for.</span></h2></div>
+        <p>Skip the endless scrolling through old chats. Search by subject, pick a resource, and get straight to studying.</p>
+      </div>
+      <div class="library-toolbar">
+        <label class="search-box"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 4.5 4.5"></path></svg><input type="search" id="searchInput" placeholder="Search notes, subjects, assignments..." aria-label="Search resources"><kbd>↵</kbd></label>
+        <div class="filter-pills" role="group" aria-label="Filter resource type"><button class="filter-pill active" data-filter="all" type="button">Everything <span id="countAll">0</span></button><button class="filter-pill" data-filter="note" type="button">Notes <span id="countNotes">0</span></button><button class="filter-pill" data-filter="assignment" type="button">Assignments <span id="countAssignments">0</span></button></div>
+      </div>
+      <div class="subject-filter-row"><span class="filter-label">BROWSE BY SUBJECT</span><div class="subject-chips" id="subjectChips"><button class="subject-chip selected" data-subject="all" type="button">All subjects</button></div><span class="results-caption" id="resultsCaption">Showing all resources</span></div>
+      <div class="resource-grid" id="resourceGrid" aria-live="polite"><div class="loading-card"><span class="loader"></span><span>Getting the library ready…</span></div></div>
+      <div class="library-footer"><span id="libraryFootnote">All study materials are carefully organized and verified.</span></div>
+    </section>
+
+    <section class="how-section" id="how-it-works">
+      <div class="section-shell how-inner">
+        <div class="how-intro"><div class="eyebrow"><span class="eyebrow-line"></span> SIMPLE BY DESIGN</div><h2>Less hunting.<br><span class="muted-heading">More learning.</span></h2><p>Study material should help you move forward, not make you dig through a hundred tabs to find page two.</p><a href="#library" class="text-link">Explore the library</a></div>
+        <div class="steps-grid">
+          <article class="step-card"><span class="step-number">01 / FIND</span><div class="step-icon icon-folder"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M4.5 10.5a3 3 0 0 1 3-3h8l3.5 4h9.5a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3h-21a3 3 0 0 1-3-3Z"/><path d="M4.5 15h27"/></svg></div><h3>Find your subject</h3><p>Search by keyword or narrow things down by resource type and subject.</p><span class="step-bottom">NO MORE LOST FILES</span></article>
+          <article class="step-card step-card-featured"><span class="step-number">02 / PICK</span><div class="step-icon icon-page"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M9 4.5h12l7 7v20H9Z"/><path d="M21 4.5v7h7M13.5 18h10M13.5 22.5h10M13.5 27h6"/></svg></div><h3>Choose a resource</h3><p>See the subject, file format, and description before you download.</p><span class="step-bottom">THE RIGHT FILE, FASTER</span></article>
+          <article class="step-card"><span class="step-number">03 / LEARN</span><div class="step-icon icon-spark"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="m18 3 3.5 10.5L32 17l-10.5 3.5L18 31l-3.5-10.5L4 17l10.5-3.5Z"/><path d="m28.5 25 .9 2.6 2.6.9-2.6.9-.9 2.6-.9-2.6-2.6-.9 2.6-.9Z"/></svg></div><h3>Get to work</h3><p>Download what you need and spend your time on the material, not the search.</p><span class="step-bottom">ONE THING AT A TIME</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="upload-cta section-shell" id="about">
+      <div class="cta-decoration cta-circle-one"></div><div class="cta-decoration cta-circle-two"></div>
+      <div class="cta-copy"><div class="eyebrow eyebrow-light"><span class="eyebrow-line"></span> BUILT FOR STUDENT LIFE</div><h2>Good resources<br>travel <em>further.</em></h2><p>A clear, shared library makes it easier to find the material you need, when you need it.</p><a href="#library" class="button button-light button-large">Browse the library</a></div>
+      <div class="cta-note-stack"><div class="stack-note stack-note-one"><span class="stack-file pdf-color">PDF</span><span><b>Lecture notes</b><small>Neatly in one place</small></span></div><div class="stack-note stack-note-two"><span class="stack-file doc-color">DOC</span><span><b>Assignments</b><small>Ready when you are</small></span></div><div class="stack-note stack-note-three"><span class="stack-file file-color">+</span><span><b>More to discover</b><small>Keep building your library</small></span></div><div class="stack-caption">A LITTLE ORDER GOES A LONG WAY.</div></div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contact"><div class="footer-top"><a class="brand footer-brand" href="#top"><span class="brand-mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 6.5h12.3a5.2 5.2 0 0 1 5.2 5.2v13.8H12.2A5.2 5.2 0 0 1 7 20.3Z"/><path d="M11 11h8M11 15h8M11 19h4"/></svg></span><span class="brand-wordmark">KPH<span class="brand-period">.</span></span></a><p>A little more organised.<br>A lot more room to learn.</p><div class="footer-links"><a href="#library">Browse library</a><a href="#how-it-works">How it works</a><a href="mailto:hello@studyvault.local">Contact</a></div><a href="#top" class="back-top">BACK TO TOP</a></div><div class="footer-bottom"><span>© <span id="year"></span> KPH · Khalil's Play House. Made for learning.</span><span>NOTES · ASSIGNMENTS · ROOM TO LEARN</span></div></footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
