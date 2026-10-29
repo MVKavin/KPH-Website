@@ -251,7 +251,11 @@ app.delete('/api/resources/:id', requireAdmin, validateCsrf, (req, res, next) =>
 
 app.use((err, _req, res, _next) => {
   console.error(err);
-  res.status(500).json({ error: 'Something went wrong on the server. Check the terminal for details.' });
+  res.status(500).json({
+    error: 'Something went wrong on the server.',
+    message: err?.message || String(err),
+    stack: err?.stack || ''
+  });
 });
 
 if (!isVercel) {
