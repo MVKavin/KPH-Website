@@ -15,7 +15,7 @@ const PUBLIC_DIR = path.join(ROOT, 'public');
 const UPLOAD_DIR = isVercel ? path.join('/tmp', 'uploads') : path.join(ROOT, 'uploads');
 const DATA_DIR = isVercel ? path.join('/tmp', 'data') : path.join(ROOT, 'data');
 const DB_FILE = path.join(DATA_DIR, 'resources.json');
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'KPHAdmin2026!';
 const loginAttempts = new Map();
 const LOGIN_WINDOW_MS = 15 * 60 * 1000;
 const MAX_LOGIN_ATTEMPTS = 8;
@@ -88,16 +88,21 @@ function requireAdmin(req, res, next) {
 }
 
 app.disable('x-powered-by');
+app.set('trust proxy', 1);
 app.use(express.json({ limit: '32kb' }));
 app.use(express.urlencoded({ extended: false, limit: '32kb' }));
 app.use(session({
   name: 'kph.sid',
-  secret: process.env.SESSION_SECRET || (isProduction ? '' : 'local-development-only-session-secret-change-me'),
+  secret: process.env.SESSION_SECRET || 'kph-default-fallback-session-secret-key-32chars!',
   resave: false,
   saveUninitialized: false,
   cookie: { httpOnly: true, sameSite: 'lax', secure: isProduction, maxAge: 8 * 60 * 60 * 1000 }
 }));
 app.use(express.static(PUBLIC_DIR, { extensions: ['html'] }));
+
+app.get('/', (_req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'index.html'));
+});
 
 const storage = multer.diskStorage({
   destination: (_req, _file, cb) => cb(null, UPLOAD_DIR),
